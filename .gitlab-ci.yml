@@ -1,0 +1,7 @@
+build:
+  script:
+  - ./compile.sh
+  after_script:
+  - cd /media/storage/gitlab/
+  - sudo rm -rf Docker_Example
+  - git clone http://192.168.109.15/root/Docker_Example.git
