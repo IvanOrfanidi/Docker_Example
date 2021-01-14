@@ -27,6 +27,3 @@ endif(NOT CMAKE_BUILD_TYPE)
 
 # Compiling target
 add_executable(${PROJECT_NAME} ${SOURCES})
-
-# Link target
-target_link_libraries(${PROJECT_NAME})

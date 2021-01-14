@@ -5,16 +5,16 @@ FROM ubuntu:18.04
 LABEL maintainer="i.orfanidi@mail.ru"
 
 # Specify the working directory
-WORKDIR /docker_example
+WORKDIR /Docker_Example
 
 # Copy the current folder which contains C++ source code to the Docker image
-COPY . /docker_example
+COPY . /Docker_Example
 
 # Update apps on the base image
 RUN apt-get update && \
-    apt-get install -y \
-        cmake build-essential && \
-    cmake -DCMAKE_BUILD_TYPE=Release /docker_example && \
+    apt-get install -y gcc cmake build-essential && \
+    rm -rf build && mkdir build && cd build && \
+    cmake -DCMAKE_BUILD_TYPE=Release .. && \
     cmake --build .
 
-CMD ["./main"]
+CMD ["./build/docker_example"]
