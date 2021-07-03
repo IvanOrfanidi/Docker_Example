@@ -1,6 +1,14 @@
 stages:
+  - checking
   - building
-  - running
+  - docker
+
+clang-format:
+  stage: checking
+  script:
+    - git clone http://git.home.lan/root/check-clang-format.git
+    - cp check-clang-format/check-clang-format.py .
+    - python3 check-clang-format.py -r .
 
 gcc:
   stage: building
@@ -26,12 +34,8 @@ clang:
       ..
     - cmake --build .
 
-docker:
-  stage: building
+ubuntu-18.04:
+  stage: docker
   script:
     - docker build -t docker_example:latest .
-
-docker-gcc:
-  stage: running
-  script:
     - docker run --rm docker_example

@@ -17,13 +17,8 @@ endif()
 
 # Source files
 set(SOURCES
-    src/main.cpp
+    source/main.cpp
 )
-
-# Set build type
-if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
-endif(NOT CMAKE_BUILD_TYPE)
 
 # Compiling target
 add_executable(${PROJECT_NAME} ${SOURCES})
